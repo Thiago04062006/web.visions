@@ -10,6 +10,24 @@
      let lastScrollTop = 0;
      const header = document.querySelector('header');
 
+     // Selecionar todos os links de navegação
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1); // Obtém o ID da seção
+            const targetSection = document.getElementById(targetId);
+            
+            // Rola até a seção e centraliza o título
+            window.scrollTo({
+                top: targetSection.offsetTop - 20, // Ajuste o valor para centralizar corretamente
+                behavior: 'smooth'
+            });
+        });
+    });
+
+
      window.addEventListener('scroll', function() {
          const scrollTop = window.scrollY;
 
